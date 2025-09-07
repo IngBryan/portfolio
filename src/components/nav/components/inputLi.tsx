@@ -10,7 +10,7 @@ interface Props{
 export const InputLi = ({name,children}:Props) =>{
 
     return(
-        <li className={name}>
+        <li className={name}style={{marginRight: '60px'}}>
             {children}
         </li>
     )

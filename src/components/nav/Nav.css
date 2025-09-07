@@ -1,0 +1,10 @@
+.Nav{
+    font-family: 'Plus Jakarta Sans', sans-serif; /* tipografía */
+    font-weight: 500;      /* semibold */
+    font-size: 20px;       /* tamaño de letra */
+    letter-spacing: 0.4px;
+    line-height: 1.2;      /* ajustable según Figma */
+    background-color:#1A0B2E;
+    height: 113px;
+    
+}

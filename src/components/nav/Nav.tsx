@@ -1,4 +1,6 @@
 import {InputLi} from './components'
+import './Nav.css'
+
 interface Section {
     id: string;   
     text: string; 
@@ -25,23 +27,20 @@ function scrollToSection(sectionId:string) {
   }, 100);
 }
 
-
-
 export const Nav = ({ sections }: Props)=>{
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark  fixed-top tipografia"style={{background:'#1a0b2e'}}>
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top Nav">
         <div className="container-fluid">
           <a className="navbar-brand" href="index.html">
-            <img alt="BS" style={{ width: '40px', height: 'auto' }} />
+            <span className="navbar-brand ms-5" style={{fontSize: '30px'}}>BS</span>
           </a>
-  
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">              
               {sections.map((section, index) => (
-                <InputLi key={index} name="nav-item me-5">
+                <InputLi key={index} name="nav-item">
                     <a className="nav-link active" href='#' onClick={()=>scrollToSection(section.id)}>
                       {section.text}
                     </a>
