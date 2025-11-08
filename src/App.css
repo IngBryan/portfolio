@@ -1,5 +1,5 @@
 #root {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
@@ -25,7 +25,7 @@
   color: #888;
 }
 body{
-  background-color:  #120926;
+  background-color:  #11071F;
   
 }
 .custom-margin {
@@ -38,30 +38,88 @@ body{
   border: none;
   border-radius: 10px;
 }
-.img-mainPhoto{
-  border-Radius: 10px;
+.img-mainPhoto {
+  border-radius: 10px;
   box-shadow: 0px 0px 20px rgba(0,0,0,0.6);
+  width: 100%;      
+  max-width: 300px; 
+  height: auto;     
+}
+@media (max-width: 576px) {
+  .img-mainPhoto {
+    max-width: 200px; 
+    margin: 0 auto;   
+    display: block;
+  }
+  .img-card {
+    max-width: 100px;
+    margin: 0 auto;  
+    display: block;
+  }
+
+  .ellipse {
+    bottom: 10px; 
+    width: 100px;
+    height: 30px;
+  }
 }
 section.container {
-  background-color: #120926;
+  background-color: #11071F;
+}
+section::before {
+  content: "";
+  display: block;
+  height: 113px;/* alto del navbar */
+  margin-top: -76px;   
+  visibility: hidden;
+  pointer-events: none;
 }
 .tipografia{
-  font-family: 'Roboto', 'Times New Roman';
+  font-family: 'Preahvihear', 'Times New Roman';
+}
+.tipografia1{
+  font-family: 'Poppins', 'Times New Roman';
 }
 .tipografia_size{
-  font-size: 18px;
+  font-size: 19px;
+   letter-spacing:-0.5px;
 }
 .tipografia_size1{
-  font-size: 40px;
+  font-size: 50px;
+  letter-spacing:0.02em; /* equivale a 2% del font-size */
 }
 
 .tipografia_size2{
-  font-size: 14px;
+  font-size: 11px;
+  letter-spacing:0.02em; /* equivale a 2% del font-size */
 }
 
 .tipografia_size3{
   font-size: 22px;
+  letter-spacing:0.02em;
 }
+.tipografia_size4{
+  font-size: 17px;
+  letter-spacing:0.02em; /* equivale a 2% del font-size */
+}
+.tipografia_size5{
+  font-size: 21px;
+  letter-spacing:0.02em; /* equivale a 2% del font-size */
+}
+.tipografia_size6{
+  font-size: 40px;
+  font-weight: 500;      /* semibold */
+  letter-spacing:0.02em; /* equivale a 2% del font-size */
+}
+.tipografia_size7{
+  font-size: 26px;
+  font-weight: 500;      /* semibold */
+}
+.tipografia_size8{
+  font-size: 10px;
+  font-weight: 500;      /* semibold */
+}
+
 .tipografia_color1{
   color: #5A24A6;
 }
@@ -113,4 +171,44 @@ section.container {
 .tech-icon-wrapper:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
+}
+#section0{
+  margin-top: 133px;
+}
+.degrade{
+  background: 
+    linear-gradient(-42deg, #130428 7%, #251043 34%, #38126D 57%, #261045 85%, #190634 100%);
+  border-top: 4px solid #693B93; /* trazo */
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+}
+.img-card {
+  max-width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+.ellipse {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 20px;
+  background-color:#444;
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.3;
+}
+.custom-span {
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-color: gray;
+  margin-top: 86px;
+}
+
+@media (max-width: 768px) {
+  .custom-span {
+    margin-top: 20px;
+  }
 }

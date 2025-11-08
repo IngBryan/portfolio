@@ -1,4 +1,3 @@
-
 type Props = {
     text1: string;
     text2: string;
@@ -15,8 +14,6 @@ export const SpecialText=({text1,text2}:Props)=>{
     useEffect(()=>{
         let index1 = 0;
         let index2 = 0;
-        let interval1: ReturnType<typeof setInterval>;
-        let interval2: ReturnType<typeof setInterval>;
         const clearAll = () => {
             if (interval1Ref.current) clearInterval(interval1Ref.current);
             if (interval2Ref.current) clearInterval(interval2Ref.current);
@@ -46,14 +43,14 @@ export const SpecialText=({text1,text2}:Props)=>{
             }, 120);
         };
         startTyping();
-        //cuando se destruye el componente
         return () => {
             clearAll();
         }
 
     },[text1,text2]);
 
-    return <p className="text-start fw-bold custom-margin tipografia tipografia_size">{displayedText1}
+    return <p className="text-start fw-bold tipografia tipografia_size"style={{height:'20px'}}>
+                {displayedText1}
                 <span className="tipografia_color1">{displayedText2}</span>
             </p>;
 }

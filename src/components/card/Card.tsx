@@ -17,7 +17,7 @@ interface props{
 export const Card =(p: props)=>{
     return(
         <div className="card mt-3" style={{ background:'#120926'}}>
-            <div className="row g-0">
+            <div className={`row g-0 ${p.imageLeft ? 'flex-column-reverse flex-md-row' : 'flex-column flex-md-row'}`}>
             {p.imageLeft && (
                 <div className="col-md-4 me-2 d-flex align-items-center position-relative">
                     <img 
@@ -32,12 +32,12 @@ export const Card =(p: props)=>{
                 </div>
                 )}
                 
-                <div className={`col-md-7 d-flex align-items-center ${!p.imageLeft ? 'me-5' : 'ms-5'}`}>
+                <div className={`col-md-7 d-flex align-items-center ${!p.imageLeft ? 'me-0 me-sm-5' : 'ms-0 ms-sm-5'}`}>
                     <div className="card-body p-0 ">
                         <p className='text-start tipografia tipografia_color3' style={{ marginBottom: '0.2rem'}}>
                             {p.title1}
                         </p>
-                        <h1 className="text-start tipografia tipografia_color2" style={{ marginTop: '0.2rem' }}>
+                        <h1 className="text-start tipografia tipografia_color2 tipografia_size6" style={{ marginTop: '0.2rem' }}>
                             {p.title2}
                         </h1>
                         <p className="text-start tipografia tipografia_color2 p-3 "style={{background:'#251840',borderRadius: '10px',padding:'5px',whiteSpace:'pre-line'}}>

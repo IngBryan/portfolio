@@ -16,81 +16,88 @@ function App() {
           { id: 'section5', text: 'Contacto' },
         ]}
       />
-      <br/>
-      <section className="container py-5 text-white mb-2" id="section0" >
-        <SpecialText text1="Hola! Soy " text2="Bryan Salamone."/>
+      <section className="container text-white mb-3" id="section0" >
         <div className="row g-0">
-          <div className="col-md-4 me-5 d-flex align-items-center">
-            <img src={image1} className="img-fluid img-mainPhoto" id="img1" alt="Imagen" />
+          <div className="col-auto mt-5 me-4 col-md-4 d-flex align-items-center justify-content-start">
+            <img src={image1} className="img-mainPhoto" id="img1" alt="Imagen" />
           </div>
-          
           <div className="col-md-6 ">
-            <p className="text-start mt-5 tipografia">
-              <span className='tipografia_size'style={{textDecoration:'underline',textDecorationColor:'gray'}}>Un Desarrollador que</span> <br/>
-              <span className='tipografia_size1' style={{lineHeight:'0.9'}}>Cree que es bueno que el código no <span className='tipografia_color1 elipse'>funcione ...</span><br/></span>
-              <span className='tipografia_size2'>Cada bug es otro café.</span>              
+            <SpecialText text1="Hola! Soy " text2="Bryan Salamone."/>
+            <p className="text-start tipografia">
+              <span className='tipografia_size4 custom-span'>         
+                Un Desarrollador que
+              </span>
+              <br/>
+              <p style={{lineHeight:'1.26'}}>
+                <span className='tipografia_size1'>Aprende <span className='tipografia_color1 elipse'>Continuamente...</span>
+                </span>
+                <br/>
+                <span className='tipografia_size2'>Porque quedarse quieto es quedarse atrás.</span> 
+              </p>            
             </p>
           </div>
         </div>
       </section>
         
-      <section className="container p-2  text-white py-5 mb-1" id="section1" >
-        <h2 className="text-start tipografia tipografia_size1"><strong>Soy analista en computación.|</strong></h2>
+      <section className="container p-2  text-white py-5" id="section1" >
+        <h2 className="text-start tipografia tipografia_size1">Soy analista en computación.|</h2>
         <p className="text-start tipografia tipografia_size">Actualmente trabajo como desarrollador Junior en 
           <a href='https://www.montevideocomm.uy' target='_blank' rel='noopener noreferrer'>
-            <img src="/LogoMontevideoCOMM.jpg" className='img-thumbnail' alt="Logo"  style={{marginLeft:'6px',width:'27px' }} />
+            <img src="/LogoMontevideoCOMM.jpg" className='img-thumbnail' alt="Logo"  style={{marginLeft:'6px',width:'27px',height:'28px' }} />
             <span>Montevideo COMM</span>
           </a>
-          , </p>
-        <br />
-        <p className="text-start tipografia tipografia_size">
-          Soy un desarrollador autodidacta que recién comienza en la industria, 
+          , 
+        </p>
+        <p className="text-start tipografia tipografia_size3 mt-5">
+          Soy un desarrollador que recién comienza en la industria, 
           pero con una fuerte pasión por crear soluciones digitales eficientes, usables y alineadas con 
-          las necesidades tanto del usuario como del cliente. Me destaco por mi capacidad de aprendizaje 
+          las necesidades del cliente. Me destaco por mi capacidad de aprendizaje 
           continuo y un enfoque práctico orientado a la resolución de problemas.
-          </p>
+        </p>
       </section>
 
       <section className="container p-2 text-white py-5 mb-1" id="section2">
-        <h1 className="text-start tipografia tipografia_size1"><strong>Experiencia Laboral</strong></h1>
+        <h1 className="text-start tipografia tipografia_size6">
+          <strong>Experiencia Laboral</strong>
+        </h1>
         
         <div className="row g-3 mt-3">
           <div className="col-md-8">
-            <div className="card" style={{background:'#15052c',borderRadius: '30px'}}>
-              <div className="row g-0">
-                <div className="col-md-5  d-flex pt-4 pe-5 pb-5 ps-5 ">
-                  <img src="/gx17.png" className='img-fluid rounded-end ' alt="Logo"  style={{ backgroundColor: 'transparent',zIndex: 2 }}></img>
-                </div>
-                <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '40px',
-                      left: '21%',
-                      transform: 'translateX(-50%)',
-                      width: '150px',
-                      height: '50px',
-                      backgroundColor: '#444',
-                      borderRadius: '50%',
-                      zIndex: 1,
-                      opacity: 0.3
-                    }}
+            <div className="card degrade">
+              <div className="row g-0 position-relative">
+                
+                <div className="col-12 col-md-5 d-flex justify-content-center align-items-center p-4 position-relative">
+                  <img 
+                    src="/gx17.png" 
+                    className="img-fluid img-card rounded-end" 
+                    alt="Logo" 
                   />
-                <div className="col-md-6">
+                  <div className="ellipse"></div>
+                </div>
+
+                <div className="col-12 col-md-6">
                   <div className="card-body">
-                    <h4 className="text-start tipografia tipografia_size3 tipografia_color2"><strong>Desarrollador GeneXus</strong></h4>
-                    <p className="text-start tipografia tipografia_size2 tipografia_color2">
-                      Trabajo con GeneXus 17 y 9. Principalmente en un sistema CRM y de gestion comercial.
+                    <p className="text-start tipografia1 tipografia_size7 tipografia_color2" style={{fontWeight:'500'}}>
+                      Desarrollador GeneXus
+                    </p>
+                    <p className="text-start tipografia1 tipografia_size8 tipografia_color2">
+                      Trabajo con GeneXus 17 y 9. Principalmente en un sistema CRM y de gestión comercial.
                     </p>
                     <div className="text-start">
-                      <button className="btn tipografia_color2 tipografia"style={{
-                        backgroundColor:'#2c1250',
-                        border: '2px solid #4c2773',
-                        fontWeight: 'bold',
-                        borderRadius:'15px'
-                      }}>LEER MAS</button>
-                    </div> 
+                      <button className="btn tipografia_color2 tipografia1"
+                        style={{
+                          backgroundColor:'#2C1250',
+                          border: '1px solid #693B93',
+                          fontWeight: '500',
+                          borderRadius:'10px'
+                        }}
+                      >
+                        LEER MÁS
+                      </button>
+                    </div>
                   </div>
                 </div>                
+
               </div>
             </div>
           </div>
@@ -100,11 +107,13 @@ function App() {
         </div>
       </section>
       <section className="container p-0  text-white py-5 mb-5" id="section3">
-      <h1 className="text-start tipografia tipografia_size1"><strong>Proyectos Personales</strong></h1>
+      <h1 className="text-start tipografia tipografia_size1">
+        <strong>Proyectos</strong>
+      </h1>
         <Card 
           mainRoutes={[ { route: "/portfolio.PNG", type: "image" }]}
           title1="Proyecto Destacado"
-          title2="Mi Portfolio"
+          title2="Mi Portafolio"
           body="Este portafolio fue desarrollado con React, TypeScript, 
                 CSS , HTML y Bootstrap.
                 Cada sección tiene un objetivo específico: presentarme, mostrar mis proyectos, listar mis conocimientos y ofrecer una forma de contactarme fácilmente."
@@ -135,68 +144,57 @@ function App() {
           imageLeft={true}
           id="Antel"
         />
-        
       </section>
-
-
-
       <section className="container p-0 text-white py-5 mb-5" id="section4">
-      <h1 className="text-center tipografia tipografia_size1"><strong>Tecnologias</strong></h1>
-        <div className="align-items-start">
-
-          <h2 className='tipografia '>Front-End</h2>
-            <TechIcon src='/react.png' alt='React' tooltip='React' />
-            <TechIcon src='/javascript.png' alt='JavaScript' tooltip='JavaScript' />
-            <TechIcon src='/typescript.png' alt='TypeScript' tooltip='TypeScript' />
-            <TechIcon src='/bootstrap.png' alt='Bootstrap' tooltip='Bootstrap' />
-            <TechIcon src='/html.png' alt='HTML' tooltip='HTML' />
-            <TechIcon src='/css.png' alt='CSS' tooltip='CSS' />
-          
-          <h2 className='tipografia '>Back-End</h2>
-          <div className="tech-icon-wrapper">
-            <img src='/spring.png' className="img-thumbnail" alt="Spring"/>
-            <span className="tooltip-text">Spring</span>
-          </div>
-          <div className="tech-icon-wrapper">
-            <img src='/java.png' className="img-thumbnail" alt="Java"/>
-            <span className="tooltip-text">Java</span>
-          </div>
-          <div className="tech-icon-wrapper">
-            <img src='/csharp.png' className="img-thumbnail" alt="C#"/>
-            <span className="tooltip-text">C#</span>
-          </div>
-          <div className="tech-icon-wrapper">
-            <img src='/c++.png' className="img-thumbnail" alt="C++"/>
-            <span className="tooltip-text">C++</span>
-          </div>
-          <div className="tech-icon-wrapper">
-            <img src='/python.png' className="img-thumbnail" alt="Python"/>
-            <span className="tooltip-text">Python</span>
-          </div>
-          <h2 className='tipografia '>Bases de Datos</h2>
-          <div className="tech-icon-wrapper">
-            <img src='/sqlserver.png' className="img-thumbnail" alt="SQL Server" />
-            <span className="tooltip-text tipografia">SQL Server</span>
-          </div>
-          <div className="tech-icon-wrapper">
-            <img src="postgresql.png" className="img-thumbnail" alt="PostgreSQL" />
-            <span className="tooltip-text tipografia">PostgreSQL</span>
-          </div>
-          <div className="tech-icon-wrapper">
-            <img src='/mysql.png' className="img-thumbnail" alt="MySQL" />
-            <span className="tooltip-text tipografia">MySQL</span>
-          </div>
-          <h2 className='tipografia '>Nuble</h2>
-            <div className="tech-icon-wrapper">
-              <img src='/google-cloud.png' className="img-thumbnail" alt="PostgreSQL" />
-              <span className="tooltip-text tipografia">Google Cloud</span>
+        <h1 className="text-center tipografia tipografia_size1 mb-3">
+          <strong>Tecnologias</strong>
+        </h1>
+        <div className="d-flex flex-column align-items-center gap-3">
+          <div className="d-flex flex-column align-items-center gap-3">
+            <h3 className="tipografia text-center">Front-End</h3>
+            <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
+              <TechIcon src='/react.png' alt='React' tooltip='React' />
+              <TechIcon src='/javascript.png' alt='JavaScript' tooltip='JavaScript' />
+              <TechIcon src='/typescript.png' alt='TypeScript' tooltip='TypeScript' />
+              <TechIcon src='/bootstrap.png' alt='Bootstrap' tooltip='Bootstrap' />
+              <TechIcon src='/html.png' alt='HTML' tooltip='HTML' />
+              <TechIcon src='/css.png' alt='CSS' tooltip='CSS' />
             </div>
-          <h2 className='tipografia '>Complementarias</h2>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-3">
+            <h3 className="tipografia text-center">Back-End</h3>
+            <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
+              <TechIcon src='/spring.png' alt='Spring' tooltip='Spring' />
+              <TechIcon src='/java.png' alt='Java' tooltip='Java' />
+              <TechIcon src='/csharp.png' alt='C#' tooltip='C#' />
+              <TechIcon src='/c++.png' alt='C++' tooltip='C++' />
+              <TechIcon src='/python.png' alt='Python' tooltip='Python' />
+            </div>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-3">
+            <h3 className="tipografia text-center">Bases de Datos</h3>
+            <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
+              <TechIcon src='/sqlserver.png' alt='SQL Server' tooltip='SQL Server' />
+              <TechIcon src='/postgresql.png' alt='PostgreSQL' tooltip='PostgreSQL' />
+              <TechIcon src='/mysql.png' alt='MySQL' tooltip='MySQL' />
+            </div>
+          </div>
+          <div className="d-flex flex-column align-items-center gap-3">
+            <h3 className="tipografia text-center">Nube</h3>
+            <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
+              <TechIcon src='/google-cloud.png' alt='Google Cloud' tooltip='Google Cloud' />
+            </div>
+          </div>
+          {/*<div className="d-flex flex-column align-items-center gap-3">
+            <h2 className="tipografia text-center">Complementarias</h2>
+
+          </div>*/}
+
         </div>
       </section>
 
       <section className="container p-0 text-white py-5" id="section5">
-        <h1 className="text-center">Contacto</h1>
+        <h1 className="text-center tipografia tipografia_size1">Contacto</h1>
 
         <form className="mx-auto" style={{background:'#251840',borderRadius: '10px',padding: '20px', maxWidth: '500px'}}>
           <div className="mb-3" >
