@@ -1,8 +1,6 @@
 import './App.css';
 import { Nav, Card,SpecialText,TechIcon } from './components';
 import image1 from '/foto.jpg';
-//import {initialPositionArrow,finalPositionArrow} from './script.ts'
-//import { useEffect, useState } from 'react';
 function App() {
   return (
     <>
@@ -13,7 +11,7 @@ function App() {
           { id: 'section2', text: 'Experiencia'},
           { id: 'section3', text: 'Proyectos' },
           { id: 'section4', text: 'Tecnologías' },
-          { id: 'section5', text: 'Contacto' },
+          /*{ id: 'section5', text: 'Contacto' },WIP*/ 
         ]}
       />
       <section className="container text-white mb-3" id="section0" >
@@ -43,7 +41,7 @@ function App() {
         <h2 className="text-start tipografia tipografia_size1">Soy analista en computación.|</h2>
         <p className="text-start tipografia tipografia_size">Actualmente trabajo como desarrollador Junior en 
           <a href='https://www.montevideocomm.uy' target='_blank' rel='noopener noreferrer'>
-            <img src="/LogoMontevideoCOMM.jpg" className='img-thumbnail' alt="Logo"  style={{marginLeft:'6px',width:'27px',height:'28px' }} />
+            <img src="/portfolio/LogoMontevideoCOMM.jpg" className='img-thumbnail' alt="Logo"  style={{marginLeft:'6px',width:'27px',height:'28px' }} />
             <span>Montevideo COMM</span>
           </a>
           , 
@@ -68,7 +66,7 @@ function App() {
                 
                 <div className="col-12 col-md-5 d-flex justify-content-center align-items-center p-4 position-relative">
                   <img 
-                    src="/gx17.png" 
+                    src="/portfolio/gx17.png" 
                     className="img-fluid img-card rounded-end" 
                     alt="Logo" 
                   />
@@ -84,6 +82,7 @@ function App() {
                       Trabajo con GeneXus 17 y 9. Principalmente en un sistema CRM y de gestión comercial.
                     </p>
                     <div className="text-start">
+                      {/* WORK IN PROGRESS
                       <button className="btn tipografia_color2 tipografia1"
                         style={{
                           backgroundColor:'#2C1250',
@@ -93,7 +92,7 @@ function App() {
                         }}
                       >
                         LEER MÁS
-                      </button>
+                      </button>*/}
                     </div>
                   </div>
                 </div>                
@@ -111,35 +110,35 @@ function App() {
         <strong>Proyectos</strong>
       </h1>
         <Card 
-          mainRoutes={[ { route: "/portfolio.PNG", type: "image" }]}
+          mainRoutes={[ { route: "/portfolio/portfolio.PNG", type: "image" }]}
           title1="Proyecto Destacado"
           title2="Mi Portafolio"
           body="Este portafolio fue desarrollado con React, TypeScript, 
                 CSS , HTML y Bootstrap.
                 Cada sección tiene un objetivo específico: presentarme, mostrar mis proyectos, listar mis conocimientos y ofrecer una forma de contactarme fácilmente."
           imageTechnology={[
-            { src: 'react48.png', alt: 'React', tooltip: 'React' },
-            { src: 'typescript48.png', alt: 'TypeScript', tooltip: 'TypeScript' },
-            { src: 'html48.png', alt: 'HTML', tooltip: 'HTML' },
-            { src: 'css48.png', alt: 'CSS', tooltip: 'CSS' },
-            { src: 'bootstrap48.png', alt: 'Bootstrap', tooltip: 'Bootstrap' }
+            { src: '/portfolio/react48.png', alt: 'React', tooltip: 'React' },
+            { src: '/portfolio/typescript48.png', alt: 'TypeScript', tooltip: 'TypeScript' },
+            { src: '/portfolio/html48.png', alt: 'HTML', tooltip: 'HTML' },
+            { src: '/portfolio/css48.png', alt: 'CSS', tooltip: 'CSS' },
+            { src: '/portfolio/bootstrap48.png', alt: 'Bootstrap', tooltip: 'Bootstrap' }
           ]}
           imageLeft={false}
           id="Portfolio"
         />
         <Card 
-          mainRoutes={[ { route: "/Antel1.PNG", type: "image" },{ route: "AntelChallenge2025.mp4", type: "video" }]}
+          mainRoutes={[ { route: "/portfolio/Antel1.PNG", type: "image" },{ route: "/portfolio/AntelChallenge2025.mp4", type: "video" }]}
           title1="Proyecto Destacado"
           title2="Antel Challenge"
           body={`Proyecto realizado para Antel Tech Challenge 2025 - Desafío Accesa.
 
             Automatizamos un reporte SLA usando Python, Google Cloud (Vertex AI y Buckets) y desplegamos la app en la nube con Gunicorn.`}
           imageTechnology={[
-            { src: 'python.png', alt: 'Python', tooltip: 'Python' },
-            { src: 'VetexIA.png', alt: 'Vertex AI', tooltip: 'Vertex AI' },
-            { src: 'google-cloud.png', alt: 'Google Cloud', tooltip: 'Google Cloud' },
-            { src: 'html48.png', alt: 'HTML', tooltip: 'HTML' },
-            { src: 'bootstrap48.png', alt: 'Bootstrap', tooltip: 'Bootstrap' }
+            { src: '/portfolio/python.png', alt: 'Python', tooltip: 'Python' },
+            { src: '/portfolio/VetexIA.png', alt: 'Vertex AI', tooltip: 'Vertex AI' },
+            { src: '/portfolio/google-cloud.png', alt: 'Google Cloud', tooltip: 'Google Cloud' },
+            { src: '/portfolio/html48.png', alt: 'HTML', tooltip: 'HTML' },
+            { src: '/portfolio/bootstrap48.png', alt: 'Bootstrap', tooltip: 'Bootstrap' }
           ]}
           imageLeft={true}
           id="Antel"
@@ -153,36 +152,36 @@ function App() {
           <div className="d-flex flex-column align-items-center gap-3">
             <h3 className="tipografia text-center">Front-End</h3>
             <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
-              <TechIcon src='/react.png' alt='React' tooltip='React' />
-              <TechIcon src='/javascript.png' alt='JavaScript' tooltip='JavaScript' />
-              <TechIcon src='/typescript.png' alt='TypeScript' tooltip='TypeScript' />
-              <TechIcon src='/bootstrap.png' alt='Bootstrap' tooltip='Bootstrap' />
-              <TechIcon src='/html.png' alt='HTML' tooltip='HTML' />
-              <TechIcon src='/css.png' alt='CSS' tooltip='CSS' />
+              <TechIcon src='/portfolio/react.png' alt='React' tooltip='React' />
+              <TechIcon src='/portfolio/javascript.png' alt='JavaScript' tooltip='JavaScript' />
+              <TechIcon src='/portfolio/typescript.png' alt='TypeScript' tooltip='TypeScript' />
+              <TechIcon src='/portfolio/bootstrap.png' alt='Bootstrap' tooltip='Bootstrap' />
+              <TechIcon src='/portfolio/html.png' alt='HTML' tooltip='HTML' />
+              <TechIcon src='/portfolio/css.png' alt='CSS' tooltip='CSS' />
             </div>
           </div>
           <div className="d-flex flex-column align-items-center gap-3">
             <h3 className="tipografia text-center">Back-End</h3>
             <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
-              <TechIcon src='/spring.png' alt='Spring' tooltip='Spring' />
-              <TechIcon src='/java.png' alt='Java' tooltip='Java' />
-              <TechIcon src='/csharp.png' alt='C#' tooltip='C#' />
-              <TechIcon src='/c++.png' alt='C++' tooltip='C++' />
-              <TechIcon src='/python.png' alt='Python' tooltip='Python' />
+              <TechIcon src='/portfolio/spring.png' alt='Spring' tooltip='Spring' />
+              <TechIcon src='/portfolio/java.png' alt='Java' tooltip='Java' />
+              <TechIcon src='/portfolio/csharp.png' alt='C#' tooltip='C#' />
+              <TechIcon src='/portfolio/c++.png' alt='C++' tooltip='C++' />
+              <TechIcon src='/portfolio/python.png' alt='Python' tooltip='Python' />
             </div>
           </div>
           <div className="d-flex flex-column align-items-center gap-3">
             <h3 className="tipografia text-center">Bases de Datos</h3>
             <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
-              <TechIcon src='/sqlserver.png' alt='SQL Server' tooltip='SQL Server' />
-              <TechIcon src='/postgresql.png' alt='PostgreSQL' tooltip='PostgreSQL' />
-              <TechIcon src='/mysql.png' alt='MySQL' tooltip='MySQL' />
+              <TechIcon src='/portfolio/sqlserver.png' alt='SQL Server' tooltip='SQL Server' />
+              <TechIcon src='/portfolio/postgresql.png' alt='PostgreSQL' tooltip='PostgreSQL' />
+              <TechIcon src='/portfolio/mysql.png' alt='MySQL' tooltip='MySQL' />
             </div>
           </div>
           <div className="d-flex flex-column align-items-center gap-3">
             <h3 className="tipografia text-center">Nube</h3>
             <div className="d-flex flex-row gap-3 flex-wrap justify-content-center">
-              <TechIcon src='/google-cloud.png' alt='Google Cloud' tooltip='Google Cloud' />
+              <TechIcon src='/portfolio/google-cloud.png' alt='Google Cloud' tooltip='Google Cloud' />
             </div>
           </div>
           {/*<div className="d-flex flex-column align-items-center gap-3">
@@ -192,7 +191,8 @@ function App() {
 
         </div>
       </section>
-
+           
+      {/*WORK IN PROGRESS
       <section className="container p-0 text-white py-5" id="section5">
         <h1 className="text-center tipografia tipografia_size1">Contacto</h1>
 
@@ -216,7 +216,7 @@ function App() {
           <button type="submit" className="btn btn-primary w-20">Enviar</button>
 
         </form>
-      </section>
+      </section>*/} 
     </>
   );
 }

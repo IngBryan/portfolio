@@ -21,7 +21,7 @@ export const Card =(p: props)=>{
             {p.imageLeft && (
                 <div className="col-md-4 me-2 d-flex align-items-center position-relative">
                     <img 
-                    src='./Gradient-3.png' 
+                    src='/portfolio/Gradient-3.png' 
                     alt="fondo degradado"
                     className="position-absolute top-0 start-0 w-100 h-100"
                     style={{ objectFit: 'cover', zIndex: 0 }}
@@ -48,7 +48,7 @@ export const Card =(p: props)=>{
                 {!p.imageLeft && (
                     <div className="col-md-4 ms-2 d-flex align-items-center position-relative" style={{ overflow: 'hidden' }}>
                         <img 
-                            src='./Gradient-3.png' 
+                            src='/portfolio/Gradient-3.png' 
                             alt="fondo degradado"
                             className="position-absolute top-0 start-0 w-100 h-100"
                             style={{ objectFit: 'cover', zIndex: 0 }}
