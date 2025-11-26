@@ -206,7 +206,41 @@ section::before {
   text-decoration-color: gray;
   margin-top: 86px;
 }
+.custom-button{
+  background-color:#2C1250;
+  border: 1px solid #693B93;
+  font-weight: 500;
+  border-radius:10px;
+}
+.custom-toast {
+  background-color: #251840;       
+  border: 1px solid #693B93;       
+  color: #ffffff;                  
+  border-radius: 10px;             
+  padding: 12px 16px;
+  min-width: 300px;
 
+  font-family: 'Poppins', 'Times New Roman';
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.6);
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.custom-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.custom-toast.hide {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.toast-body-custom {
+  font-size: 16px;
+  font-family: 'Poppins', 'Times New Roman';
+}
 @media (max-width: 768px) {
   .custom-span {
     margin-top: 20px;

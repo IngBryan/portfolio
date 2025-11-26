@@ -1,5 +1,5 @@
 import './App.css';
-import { Nav, Card,SpecialText,TechIcon } from './components';
+import { Nav, Card,SpecialText,TechIcon,ContactForm } from './components';
 import image1 from '/foto.jpg';
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
           { id: 'section2', text: 'Experiencia'},
           { id: 'section3', text: 'Proyectos' },
           { id: 'section4', text: 'Tecnologías' },
-          /*{ id: 'section5', text: 'Contacto' },WIP*/ 
+          { id: 'section5', text: 'Contacto' },
         ]}
       />
       <section className="container text-white mb-3" id="section0" >
@@ -192,31 +192,11 @@ function App() {
         </div>
       </section>
            
-      {/*WORK IN PROGRESS
       <section className="container p-0 text-white py-5" id="section5">
         <h1 className="text-center tipografia tipografia_size1">Contacto</h1>
-
-        <form className="mx-auto" style={{background:'#251840',borderRadius: '10px',padding: '20px', maxWidth: '500px'}}>
-          <div className="mb-3" >
-            <input type="text" className="form-control" id="nombre" placeholder="Nombre" />
-          </div>
-
-          <div className="mb-3">
-            <input type="tel" className="form-control" id="telefono" placeholder="Telefono" />
-          </div>
-
-          <div className="mb-3">
-            <input type="email" className="form-control" id="email" placeholder="Correo" />
-          </div>
-
-          <div className="mb-3">
-            <textarea className="form-control" id="mensaje" rows={4} placeholder="Escribe tu mensaje aquí..."></textarea>
-          </div>
-
-          <button type="submit" className="btn btn-primary w-20">Enviar</button>
-
-        </form>
-      </section>*/} 
+        <ContactForm/>
+  
+      </section>
     </>
   );
 }
