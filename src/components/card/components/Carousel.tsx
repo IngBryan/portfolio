@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { Data } from '../Card';
 
 interface CarouselProps {
@@ -10,7 +10,8 @@ export const Carousel = ({ items, id }: CarouselProps) => {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState<{ route: string; type: string } | null>(null);
 
-  const handleDoubleClick = (item: { route: string; type: string }) => {
+  const openModal = (item: { route: string; type: string }) => {
+    if (item.type !== 'image') return;
     setModalContent(item);
     setShowModal(true);
   };
@@ -30,34 +31,38 @@ export const Carousel = ({ items, id }: CarouselProps) => {
               type="button"
               data-bs-target={`#${id}`}
               data-bs-slide-to={index}
-              className={index === 0 ? "active" : ""}
-              aria-current={index === 0 ? "true" : undefined}
+              className={index === 0 ? 'active' : ''}
+              aria-current={index === 0 ? 'true' : undefined}
               aria-label={`Slide ${index + 1}`}
-            ></button>
+            />
           ))}
         </div>
 
         <div className="carousel-inner">
           {items.map((item, index) => (
-            <div
-              key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-            >
-              {item.type === "image" ? (
-                <img
-                  src={item.route}
-                  className="d-block w-100"
-                  alt={`slide-${index}`}
-                  onDoubleClick={() => handleDoubleClick(item)} // SOLO en imagenes
-                  style={{ cursor: "pointer" }}
-                />
+            <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+              {item.type === 'image' ? (
+                <div className="carousel-media-wrapper" onClick={() => openModal(item)}>
+                  <img
+                    src={item.route}
+                    className="d-block w-100"
+                    alt={`Captura del proyecto, slide ${index + 1}`}
+                    loading="lazy"
+                  />
+                  <button
+                    type="button"
+                    className="carousel-expand-btn"
+                    aria-label="Ampliar imagen"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openModal(item);
+                    }}
+                  >
+                    Ampliar
+                  </button>
+                </div>
               ) : (
-                <video
-                  className="d-block w-100"
-                  controls
-                  style={{ cursor: "pointer" }}
-                  // No onDoubleClick aquí para video
-                >
+                <video className="d-block w-100" controls preload="metadata">
                   <source src={item.route} type="video/mp4" />
                   Tu navegador no soporta la reproducción de videos.
                 </video>
@@ -67,29 +72,23 @@ export const Carousel = ({ items, id }: CarouselProps) => {
         </div>
       </div>
 
-      {/* Modal para imagen ampliada */}
-      {showModal && modalContent && modalContent.type === "image" && (
+      {showModal && modalContent && modalContent.type === 'image' && (
         <div
-          className="modal fade show"
-          style={{ display: "block", backgroundColor: "rgba(0,0,0,0.7)" }}
+          className="image-modal"
           onClick={handleClose}
-          aria-modal="true"
           role="dialog"
+          aria-modal="true"
+          aria-label="Vista ampliada de imagen"
         >
-          <div
-            className="modal-dialog modal-dialog-centered modal-lg"
+          <button type="button" className="image-modal__close" onClick={handleClose}>
+            Cerrar
+          </button>
+          <img
+            src={modalContent.route}
+            className="image-modal__img"
+            alt="Imagen ampliada del proyecto"
             onClick={(e) => e.stopPropagation()}
-          >
-            <div className="modal-content bg-transparent border-0">
-              <div className="modal-body p-0">
-                <img
-                  src={modalContent.route}
-                  className="img-fluid w-100"
-                  alt="Ampliado"
-                />
-              </div>
-            </div>
-          </div>
+          />
         </div>
       )}
     </>

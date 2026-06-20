@@ -3,3 +3,8 @@ export * from './card/Card';
 export * from './specialText/SpecialText';
 export * from './TechIcon/TechIcon';
 export * from './contactForm/contactForm';
+export * from './Hero/Hero';
+export * from './Experience/Experience';
+export * from './TechStack/TechStack';
+export * from './Footer/Footer';
+export * from './ScrollReveal/ScrollReveal';

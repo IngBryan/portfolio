@@ -1,74 +1,116 @@
-import { Carousel } from "./components";
-import { TechIcon,TechIconProps } from '../TechIcon/TechIcon';
-export interface Data {
-    route: string;
-    type: 'image' | 'video';
-  }
+import { Carousel } from './components';
+import { TechIconProps } from '../TechIcon/TechIcon';
 
-interface props{
-    mainRoutes:Data[];
-    title1:string;
-    title2:string;
-    body:string;
-    imageTechnology:TechIconProps[];
-    imageLeft:boolean;
-    id:string;
+export interface Data {
+  route: string;
+  type: 'image' | 'video';
 }
-export const Card =(p: props)=>{
-    return(
-        <div className="card mt-3" style={{ background:'#120926'}}>
-            <div className={`row g-0 ${p.imageLeft ? 'flex-column-reverse flex-md-row' : 'flex-column flex-md-row'}`}>
-            {p.imageLeft && (
-                <div className="col-md-4 me-2 d-flex align-items-center position-relative">
-                    <img 
-                    src='/portfolio/Gradient-3.png' 
-                    alt="fondo degradado"
-                    className="position-absolute top-0 start-0 w-100 h-100"
-                    style={{ objectFit: 'cover', zIndex: 0 }}
-                    />
-                    <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-                        <Carousel id={p.id} items={p.mainRoutes}/>
-                    </div>
-                </div>
+
+interface Props {
+  mainRoutes: Data[];
+  title1: string;
+  title2: string;
+  body: string;
+  tags: string[];
+  imageTechnology: TechIconProps[];
+  imageLeft: boolean;
+  id: string;
+  demoUrl?: string;
+  githubUrl?: string;
+}
+
+export const Card = (p: Props) => {
+  return (
+    <article className="project-card" aria-labelledby={`project-${p.id}`}>
+      <div className={`row g-0 ${p.imageLeft ? 'flex-column-reverse flex-md-row' : 'flex-column flex-md-row'}`}>
+        {p.imageLeft && (
+          <div className="col-md-4 project-card__media d-flex align-items-center position-relative">
+            <img
+              src="/Gradient-3.png"
+              alt=""
+              className="position-absolute top-0 start-0 w-100 h-100 project-card__media-bg"
+              loading="lazy"
+            />
+            <div className="position-relative w-100" style={{ zIndex: 1 }}>
+              <Carousel id={p.id} items={p.mainRoutes} />
+            </div>
+          </div>
+        )}
+
+        <div className={`col-md-7 d-flex align-items-center ${!p.imageLeft ? 'me-0 me-sm-4' : 'ms-0 ms-sm-4'}`}>
+          <div className="card-body p-3 p-md-4">
+            <p className="project-card__subtitle">{p.title1}</p>
+            <h3 id={`project-${p.id}`} className="project-card__title">
+              {p.title2}
+            </h3>
+            <p className="project-card__body-text">{p.body}</p>
+
+            <ul className="project-card__tags" aria-label="Tecnologías del proyecto">
+              {p.tags.map((tag) => (
+                <li key={tag} className="tag-pill">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+
+            {(p.demoUrl || p.githubUrl) && (
+              <div className="project-card__actions">
+                {p.demoUrl && (
+                  <a
+                    href={p.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card__link"
+                  >
+                    Ver demo
+                  </a>
                 )}
-                
-                <div className={`col-md-7 d-flex align-items-center ${!p.imageLeft ? 'me-0 me-sm-5' : 'ms-0 ms-sm-5'}`}>
-                    <div className="card-body p-0 ">
-                        <p className='text-start tipografia tipografia_color3' style={{ marginBottom: '0.2rem'}}>
-                            {p.title1}
-                        </p>
-                        <h1 className="text-start tipografia tipografia_color2 tipografia_size6" style={{ marginTop: '0.2rem' }}>
-                            {p.title2}
-                        </h1>
-                        <p className="text-start tipografia tipografia_color2 p-3 "style={{background:'#251840',borderRadius: '10px',padding:'5px',whiteSpace:'pre-line'}}>
-                            {p.body}
-                        </p>
-                    </div>
-                </div>
-                {!p.imageLeft && (
-                    <div className="col-md-4 ms-2 d-flex align-items-center position-relative" style={{ overflow: 'hidden' }}>
-                        <img 
-                            src='/portfolio/Gradient-3.png' 
-                            alt="fondo degradado"
-                            className="position-absolute top-0 start-0 w-100 h-100"
-                            style={{ objectFit: 'cover', zIndex: 0 }}
-                        />
-                        <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-                        <Carousel id={p.id} items={p.mainRoutes} />
-                        </div>
-                    </div>
-                )}               
-            </div>
-            <div className='row align-items-center mt-3'>
-                <div className="col-12 d-flex justify-content-center gap-3 flex-wrap">
-                    {p.imageTechnology.map((item, index) => {
-                    return (
-                        <TechIcon key={index} src={item.src} alt={item.alt} tooltip={item.tooltip} />
-                    );
-                    })}
-                </div>
-            </div>
+                {p.githubUrl && (
+                  <a
+                    href={p.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card__link"
+                  >
+                    GitHub
+                  </a>
+                )}
+              </div>
+            )}
+          </div>
         </div>
 
-    )
-}
+        {!p.imageLeft && (
+          <div className="col-md-4 project-card__media d-flex align-items-center position-relative">
+            <img
+              src="/Gradient-3.png"
+              alt=""
+              className="position-absolute top-0 start-0 w-100 h-100 project-card__media-bg"
+              loading="lazy"
+            />
+            <div className="position-relative w-100" style={{ zIndex: 1 }}>
+              <Carousel id={p.id} items={p.mainRoutes} />
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="row pb-3">
+        <div className="col-12 d-flex justify-content-center gap-3 flex-wrap px-3">
+          {p.imageTechnology.map((item, index) => (
+            <img
+              key={index}
+              src={item.src}
+              alt={item.alt}
+              title={item.tooltip}
+              loading="lazy"
+              width={48}
+              height={48}
+              style={{ background: 'transparent', border: 'none', borderRadius: 8 }}
+            />
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+};

@@ -1,152 +1,176 @@
 import { useForm, ValidationError } from '@formspree/react';
-import {useEffect, useState } from 'react';
-import { z } from "zod";
+import { useEffect, useState, type FormEvent } from 'react';
+import { z } from 'zod';
+import { siteConfig } from '../../data/site';
 
 const formSchema = z.object({
-    name: z.string().min(1,'El nombre es obligatorio'),
-    email: z.string().email("Correo inválido"),
-    phone: z.string(),
-    message: z.string().min(1,'Debe ingresar un mensaje')
-
+  name: z.string().min(1, 'El nombre es obligatorio'),
+  email: z.string().email('Correo inválido'),
+  phone: z.string(),
+  message: z.string().min(1, 'Debe ingresar un mensaje'),
 });
+
 type ZodErrors = Partial<Record<keyof z.infer<typeof formSchema>, string>>;
+
 export const ContactForm = () => {
-    const [state, handleSubmit] = useForm("xzzlbowq");
-    const [zodErrors, setZodErrors] = useState<ZodErrors>({});
-    const [showToast, setShowToast] = useState(false);
-    const [fadeClass, setFadeClass] = useState("");
+  const [formspreeState, formspreeSubmit] = useForm('xzzlbowq');
+  const [zodErrors, setZodErrors] = useState<ZodErrors>({});
+  const [showToast, setShowToast] = useState(false);
+  const [fadeClass, setFadeClass] = useState('');
 
-    useEffect(() => {
+  useEffect(() => {
     if (showToast) {
-        setFadeClass("show");
-        const timer = setTimeout(() => {
-        closeToast();
-        }, 3000);
-
-        return () => clearTimeout(timer);
+      setFadeClass('show');
+      const timer = setTimeout(() => closeToast(), 3000);
+      return () => clearTimeout(timer);
     }
-    }, [showToast]);
+  }, [showToast]);
 
-    const closeToast = () => {
-        setFadeClass("hide");
+  const closeToast = () => {
+    setFadeClass('hide');
+    setTimeout(() => setShowToast(false), 400);
+  };
 
-        setTimeout(() => {
-            setShowToast(false);
-        }, 400);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const formData = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      phone: (form.elements.namedItem('phone') as HTMLInputElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
     };
 
-    
-    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const result = formSchema.safeParse(formData);
 
-        const form = e.currentTarget as HTMLFormElement & {
-            name: { value: string };
-            email: { value: string };
-            phone: { value: number };
-            message: { value: string };
-        };
-        const formData = {
-            name:form.name.value,
-            email: form.email.value,
-            phone:form.phone.value,
-            message:form.message.value,
-        };
+    if (!result.success) {
+      const err = result.error.format();
+      setZodErrors({
+        name: err.name?._errors?.[0],
+        email: err.email?._errors?.[0],
+        phone: err.phone?._errors?.[0],
+        message: err.message?._errors?.[0],
+      });
+      return;
+    }
 
-        const result = formSchema.safeParse(formData);
-
-        if (!result.success) {
-            const err = result.error.format();
-            setZodErrors({
-                name: err.name?._errors?.[0],
-                email: err.email?._errors?.[0],
-                phone: err.phone?._errors?.[0],
-                message: err.message?._errors?.[0],
-            });
-            return;
-        }
-        setZodErrors({});
-        await handleSubmit(e);  
-        setShowToast(true);
-        form.reset();          
-    };
+    setZodErrors({});
+    await formspreeSubmit(e);
+    setShowToast(true);
+    form.reset();
+  };
 
   return (
     <>
-    <form
-      className="mx-auto tipografia tipografia_color2 mt-5"
-      style={{
-        background: "#251840",
-        borderRadius: "10px",
-        padding: "20px",
-        maxWidth: "500px"
-      }}
-      onSubmit={onSubmit}
-    >
+      <div className="contact-grid">
+        <aside className="contact-info">
+          <h3 className="contact-info__title">Hablemos</h3>
+          <div className="contact-info__item">
+            <span className="contact-info__label">Ubicación</span>
+            <span className="contact-info__value">{siteConfig.location}</span>
+          </div>
+          <div className="contact-info__item">
+            <span className="contact-info__label">Redes</span>
+            <span className="contact-info__value">
+              <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              {' · '}
+              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              {' · '}
+              <a href={`mailto:${siteConfig.email}`}>Email</a>
+            </span>
+          </div>
+        </aside>
 
-      <div className="mb-3 text-start">
-        <label htmlFor="name" className="form-label">
-            Nombre<span className="text-danger">*</span>:
-        </label>
-        <input id="name" name="name" className="form-control" placeholder="Nombre/Empresa" />
-        {zodErrors.name && (
-          <p className="text-danger">{zodErrors.name}</p>
-        )}
-        <ValidationError prefix="Name" field="name" errors={state.errors} />
+        <form className="contact-form" onSubmit={onSubmit} noValidate>
+          <div className="contact-form__field">
+            <label htmlFor="name" className="form-label-custom">
+              Nombre<span className="text-danger">*</span>
+            </label>
+            <input
+              id="name"
+              name="name"
+              className="form-control-custom"
+              placeholder="Nombre / Empresa"
+            />
+            {zodErrors.name && <p className="form-error">{zodErrors.name}</p>}
+            <ValidationError prefix="Name" field="name" errors={formspreeState.errors} />
+          </div>
+
+          <div className="contact-form__field">
+            <label htmlFor="email" className="form-label-custom">
+              Correo<span className="text-danger">*</span>
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              className="form-control-custom"
+              placeholder="Correo"
+            />
+            {zodErrors.email && <p className="form-error">{zodErrors.email}</p>}
+            <ValidationError prefix="Email" field="email" errors={formspreeState.errors} />
+          </div>
+
+          <div className="contact-form__field">
+            <label htmlFor="phone" className="form-label-custom">
+              Teléfono
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              className="form-control-custom"
+              placeholder="Teléfono (opcional)"
+            />
+            {zodErrors.phone && <p className="form-error">{zodErrors.phone}</p>}
+            <ValidationError prefix="Phone" errors={formspreeState.errors} />
+          </div>
+
+          <div className="contact-form__field">
+            <label htmlFor="message" className="form-label-custom">
+              Mensaje<span className="text-danger">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              className="form-control-custom"
+              placeholder="Mensaje..."
+              rows={4}
+            />
+            {zodErrors.message && <p className="form-error">{zodErrors.message}</p>}
+            <ValidationError prefix="Message" field="message" errors={formspreeState.errors} />
+          </div>
+
+          <div className="contact-form__submit">
+            <button
+              type="submit"
+              className={`btn btn-primary-custom btn-lg ${formspreeState.submitting ? 'contact-form__submit--loading' : ''}`}
+              disabled={formspreeState.submitting}
+            >
+              {formspreeState.submitting ? 'Enviando...' : 'Enviar'}
+            </button>
+          </div>
+        </form>
       </div>
 
-      <div className="mb-3 text-start">
-        <label htmlFor="email" className="form-label">
-            Correo<span className="text-danger">*</span>:
-        </label>
-        <input id="email" name="email" className="form-control" placeholder="Correo" />
-        {zodErrors.email && (
-          <p className="text-danger">{zodErrors.email}</p>
-        )}
-        <ValidationError prefix="Email" field="email" errors={state.errors} />
-      </div>
-
-      <div className="mb-3 text-start">
-        <label htmlFor="phone" className="form-label">
-            Telefono:
-        </label>
-        <input id="phone" name="phone"className="form-control" placeholder="Telefono" />
-        {zodErrors.phone && (
-          <p className="text-danger">{zodErrors.phone}</p>
-        )}
-        <ValidationError prefix="Phone" errors={state.errors} />
-      </div>
-
-      <div className="mb-3 text-start">
-        <label htmlFor="message" className="form-label">
-            Mensaje<span className="text-danger">*</span>:
-        </label>
-        <textarea id="message" name="message" className="form-control" placeholder="Mensaje..." />
-        {zodErrors.message && (
-          <p className="text-danger">{zodErrors.message}</p>
-        )}
-        <ValidationError prefix="Message" field="message" errors={state.errors} />
-      </div>
-      <div className="text-start">
-        <button type="submit" className="btn tipografia_color2 tipografia1 custom-button btn-lg" disabled={state.submitting}>
-            Enviar
-        </button>
-      </div>
-    </form>
-    {showToast && (
+      {showToast && (
         <div className="toast-container-custom position-fixed bottom-0 end-0 p-3">
-            <div className={`custom-toast d-flex ${fadeClass}`} role="alert">
-                <div className="toast-body-custom">
-                    Tu mensaje fue enviado correctamente.
-                </div>
-                <button
-                    type="button"
-                    className="btn-close btn-close-white me-2 m-auto"
-                    onClick={closeToast}
-                >
-                </button>
-            </div>
+          <div className={`custom-toast d-flex ${fadeClass}`} role="alert">
+            <div className="toast-body-custom">Tu mensaje fue enviado correctamente.</div>
+            <button
+              type="button"
+              className="btn-close btn-close-white me-2 m-auto"
+              aria-label="Cerrar notificación"
+              onClick={closeToast}
+            />
+          </div>
         </div>
-    )}
+      )}
     </>
   );
 };
